@@ -1,4 +1,10 @@
-from functions import gcdinvert
+
+def gcdinvert(e,g):
+	from functions import gcdinvert as gcdi
+	e=e%g
+	if not e:
+		return 0
+	return gcdi(e,g)
 
 class TwistEdCurve:
 	a=0
@@ -47,8 +53,9 @@ class TwistEdCurve:
 		elif p==(0,-1):
 			return (0,0)
 		(x,y)=p
-		t = ((1+y)*gcdinvert((1-y)%self.g,self.g))%self.g
-		return (t,(t*x)%self.g)
+		u=(1+y)*gcdinvert((1-y)    %self.g,self.g)%self.g
+		v=(1+y)*gcdinvert(((1-y)*x)%self.g,self.g)%self.g
+		return (u,v)
 
 	
 	def __repr__(self):
