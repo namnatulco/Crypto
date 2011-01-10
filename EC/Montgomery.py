@@ -37,7 +37,7 @@ class MontgomeryCurve:
 			return (0,1)
 		elif(u==0 and v==0):
 			return (0,(-1)%self.g)
-		return ((u*gcdinvert(v,self.g))%self.g, ((u-1)*gcdinvert((v+1)%self.g,self.g))%self.g)
+		return ((u*gcdinvert(v,self.g))%self.g, ((u-1)*gcdinvert((u+1)%self.g,self.g))%self.g)
 	
 	def __str__(self):
 		return "E_{F_{%d},%d,%d}"%(self.g, self.A, self.B)
