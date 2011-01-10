@@ -10,7 +10,7 @@ class MontgomeryCurve:
 		self.g=group
 	def isPoint(self,tup):
 		(x,y)=tup
-		return (self.B*y*y)%self.g == (x*x*x+self.A*x*x+x)%self.g
+		return ((self.B*y*y)%self.g == (x*x*x+self.A*x*x+x)%self.g) or (x==None and y==None)
 	def toTwistEd(self):
 		i = gcdinvert(self.B,self.g)
 		from EC.TwistEd import TwistedEdCurve
